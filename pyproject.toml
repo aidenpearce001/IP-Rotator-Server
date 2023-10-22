@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "ip-rotater-server"
+version = "0.1.0"
+description = ""
+authors = ["aidenpearce001 <aidenpearcewd01@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+uvicorn = "^0.23.2"
+fastapi = "^0.104.0"
+chardet = "^5.2.0"
+requests-ip-rotator = "^1.0.14"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
