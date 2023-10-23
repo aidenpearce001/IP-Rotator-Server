@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Query
-import requests
+import requests, base64 
 from urllib.parse import urlparse
 from requests_ip_rotator import ApiGateway, EXTRA_REGIONS
 
@@ -38,6 +38,8 @@ def proxy_request(target_url: str):
         session = requests.Session()
         session.mount(base_url, api_gateway)
         response = session.get(target_url)
-        return response.text
+
+        b64_encode = (response.text).encode("ascii") 
+        return b64_encode
     except requests.RequestException as e:
         raise HTTPException(status_code=500, detail="Failed to make a request")
