@@ -11,6 +11,7 @@ uvicorn = "^0.23.2"
 fastapi = "^0.104.0"
 chardet = "^5.2.0"
 requests-ip-rotator = "^1.0.14"
+loguru = "^0.7.2"
 
 [build-system]
 requires = ["poetry-core"]
