@@ -39,7 +39,7 @@ def proxy_request(target_url: str):
         session.mount(base_url, api_gateway)
         response = session.get(target_url)
 
-        b64_encode = (response.text).encode("ascii") 
+        b64_encode = base64.b64encode(response.text).decode("utf-8")
         return b64_encode
     except requests.RequestException as e:
         raise HTTPException(status_code=500, detail="Failed to make a request")
