@@ -28,7 +28,6 @@ def shutdown_event():
 def proxy_request(target_url: str):
     parsed_url =  urlparse(target_url)
     base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
-
     try:
         api_gateway = get_api_gateway_for_host(base_url)
         api_gateway.start()
@@ -39,6 +38,6 @@ def proxy_request(target_url: str):
         session = requests.Session()
         session.mount(base_url, api_gateway)
         response = session.get(target_url)
-        return response
+        return response.text
     except requests.RequestException as e:
         raise HTTPException(status_code=500, detail="Failed to make a request")
